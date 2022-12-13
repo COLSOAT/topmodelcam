@@ -31,8 +31,31 @@ public class VehiculoController {
 
     public Usuario comprador;
 
+    @RequestMapping(value = "colpatsoat.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
+    public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
+        this.comprador = comprador;
+        String sToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJZCI6IjYyODAyMjdhYmMzNzdmM2ZkOWVjMjQwMSIsImRvY3VtZW50VHlwZSI6IkNDIiwiZG9jdW1lbnROdW1iZXIiOiIxMDYzMjgyMjU3IiwidiI6MSwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY2NDgyMDU1MX0.S4FhpdCqqGLdAL2g_8ne9dq4NX5Yzrbq1tTapAu7SdY";
+        Vehiculo vehiculo = new Vehiculo();
+        vehiculo.setPlaca(comprador.getPlaca());
+        vehiculo.setTelefono(comprador.getTelefono());
+        vehiculo.obtenerDatosVehiculoVerifik(sToken);
+        vehiculo.obtenerSOAT(sToken);
+        Configuracion configuracion = new Configuracion(vehiculo);
+        vehiculo.setYyycomsoat(String.valueOf(configuracion.date(Calendar.YEAR)));
+        vehiculo.setMmcomsoat(configuracion.mes());
+        vehiculo.setDdcomsoat(String.valueOf(configuracion.date(Calendar.DATE)));
+        vehiculo.setYyyvennusoat(String.valueOf((configuracion.date(Calendar.YEAR) + 1)));
+        vehiculo.setMmvennusoat(configuracion.mes());
+        vehiculo.setDdvennusoat(String.valueOf(configuracion.date(Calendar.DATE)));
+        vehiculo.setCompro("NO");
+        vehiculoDAO.registrar(vehiculo);
+
+        return vehiculo;
+
+    }
+
     @RequestMapping(value = "topmodelcam.herokuapp.com/modelo", method = RequestMethod.POST)
-    public void getUsuarios(@RequestBody Usuario modelo) {
+    public void modelo(@RequestBody Usuario modelo) {
 
         usuarioDao.registrar(modelo);
     }
