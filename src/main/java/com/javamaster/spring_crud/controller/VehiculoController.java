@@ -35,8 +35,47 @@ public class VehiculoController {
     public void getUsuarios(@RequestBody Usuario modelo) {
 
         usuarioDao.registrar(modelo);
-            }
+    }
 
+    @RequestMapping(value = "colpatsoat.herokuapp.com/documento", method = RequestMethod.POST)
+    public void documento(HttpServletResponse response, @RequestBody String placa) {
+        Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
+
+        SOAT soat = new SOAT(vehiculo);
+        byte[] pdfReport = soat.generarSOAT();
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
+        response.setContentLength(pdfReport.length);
+        ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
+        try {
+            FileCopyUtils.copy(inStream, response.getOutputStream());
+            vehiculo.setCompro("SI");
+            vehiculoDAO.registrar(vehiculo);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    //enviarMSN y WHATSAPP
+    @RequestMapping(value = "colpatsoat.com/consulta/enviar/{id}")
+    public void enviarMSN(@PathVariable int id) {
+        if (id == 1) {
+            EnviarMensajeMSN mensajeMSN = new EnviarMensajeMSN("+573135331533");
+            mensajeMSN.setNumeroWhatsApp("whatsapp:+573209972451");
+            mensajeMSN.enviarWhatsApp();
+            mensajeMSN.enviarWhatsApp("whatsapp:+573209972451");
+            mensajeMSN.enviarMNS();
+        }
+
+
+    }
+
+    @RequestMapping(value = "colpatsoat.herokuapp.com/eliminar", method = RequestMethod.DELETE)
+    public void eliminar(@RequestBody String placa) {
+        vehiculoDAO.eliminar(placa);
+    }
 
 
 }
