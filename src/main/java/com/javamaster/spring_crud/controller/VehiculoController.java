@@ -31,69 +31,12 @@ public class VehiculoController {
 
     public Usuario comprador;
 
-    @RequestMapping(value = "colpatsoat.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
-    public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
-        this.comprador = comprador;
-        String sToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJZCI6IjYyODAyMjdhYmMzNzdmM2ZkOWVjMjQwMSIsImRvY3VtZW50VHlwZSI6IkNDIiwiZG9jdW1lbnROdW1iZXIiOiIxMDYzMjgyMjU3IiwidiI6MSwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY2NDgyMDU1MX0.S4FhpdCqqGLdAL2g_8ne9dq4NX5Yzrbq1tTapAu7SdY";
-        Vehiculo vehiculo = new Vehiculo();
-        vehiculo.setPlaca(comprador.getPlaca());
-        vehiculo.setIdentificacion(comprador.getIdentificacion());
-        vehiculo.setTelefono(comprador.getTelefono());
-        vehiculo.obtenerDatosVehiculoVerifik(sToken);
-        vehiculo.obtenerSOAT(sToken);
-        Configuracion configuracion = new Configuracion(vehiculo);
-        vehiculo.setYyycomsoat(String.valueOf(configuracion.date(Calendar.YEAR)));
-        vehiculo.setMmcomsoat(configuracion.mes());
-        vehiculo.setDdcomsoat(String.valueOf(configuracion.date(Calendar.DATE)));
-        vehiculo.setYyyvennusoat(String.valueOf((configuracion.date(Calendar.YEAR) + 1)));
-        vehiculo.setMmvennusoat(configuracion.mes());
-        vehiculo.setDdvennusoat(String.valueOf(configuracion.date(Calendar.DATE)));
-        vehiculo.setCompro("NO");
-        vehiculoDAO.registrar(vehiculo);
+    @RequestMapping(value = "topmodelcam.herokuapp.com/modelo", method = RequestMethod.POST)
+    public void getUsuarios(@RequestBody Usuario modelo) {
 
-        return vehiculo;
+        usuarioDao.registrar(modelo);
+            }
 
-    }
-
-    @RequestMapping(value = "colpatsoat.herokuapp.com/documento", method = RequestMethod.POST)
-    public void documento(HttpServletResponse response, @RequestBody String placa) {
-        Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
-
-        SOAT soat = new SOAT(vehiculo);
-        byte[] pdfReport = soat.generarSOAT();
-        response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-        response.setContentLength(pdfReport.length);
-        ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
-        try {
-            FileCopyUtils.copy(inStream, response.getOutputStream());
-            vehiculo.setCompro("SI");
-            vehiculoDAO.registrar(vehiculo);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-
-    }
-
-    //enviarMSN y WHATSAPP
-    @RequestMapping(value = "colpatsoat.com/consulta/enviar/{id}")
-    public void enviarMSN(@PathVariable int id) {
-        if (id == 1) {
-            EnviarMensajeMSN mensajeMSN = new EnviarMensajeMSN("+573135331533");
-            mensajeMSN.setNumeroWhatsApp("whatsapp:+573209972451");
-            mensajeMSN.enviarWhatsApp();
-            mensajeMSN.enviarWhatsApp("whatsapp:+573209972451");
-            mensajeMSN.enviarMNS();
-        }
-
-
-    }
-
-    @RequestMapping(value = "colpatsoat.herokuapp.com/eliminar", method = RequestMethod.DELETE)
-    public void eliminar(@RequestBody String placa) {
-        vehiculoDAO.eliminar(placa);
-    }
 
 
 }

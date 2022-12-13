@@ -50,11 +50,17 @@ public class Usuario {
 
     @Getter
     @Setter
-    @Column(name = "placa")
+    @Column(name = "email")
     private String placa;
 
 
+    @Getter
+    @Setter
+    @Column(name = "pais")
+    private String pais;
 
-
-
+    @Getter
+    @Setter
+    @Column(name = "mensaje")
+    private String mensaje;
 }

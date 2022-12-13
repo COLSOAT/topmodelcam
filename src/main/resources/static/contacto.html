@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-
+    <script src="main.js"></script>
     <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
 
     <!-- This site is optimized with the Yoast SEO plugin v19.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
@@ -633,16 +633,16 @@ var maxbizz_loadmore_params = {"ajaxurl":"https:\/\/studiolazorojo.com\/wp-admin
                                             </div>
                                             <div class="main-form">
                                                 <div class="row">
-                                                    <p class="col-md-6"><span class="wpcf7-form-control-wrap" data-name="your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Nombres y apellidos *" /></span></p>
-                                                    <p class="col-md-6"><span class="wpcf7-form-control-wrap" data-name="your-phone"><input type="text" name="your-phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Teléfono *" /></span></p>
+                                                    <p id="nombres" class="col-md-6"><span class="wpcf7-form-control-wrap" data-name="your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Nombres y apellidos *" /></span></p>
+                                                    <p id="telefono" class="col-md-6"><span class="wpcf7-form-control-wrap" data-name="your-phone"><input type="text" name="your-phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Teléfono *" /></span></p>
                                                 </div>
                                                 <div class="row">
 
-                                                    <p class="col-md-6"><span class="wpcf7-form-control-wrap" data-name="your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail *" /></span></p>
-                                                    <p class="col-md-6"><span class="wpcf7-form-control-wrap" data-name="your-ciudad"><input type="text" name="your-ciudad" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Pais *" /></span></p>
+                                                    <p id="email" class="col-md-6"><span class="wpcf7-form-control-wrap" data-name="your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail *" /></span></p>
+                                                    <p id="pais" class="col-md-6"><span class="wpcf7-form-control-wrap" data-name="your-ciudad"><input type="text" name="your-ciudad" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Pais *" /></span></p>
                                                 </div>
-                                                <p><span class="wpcf7-form-control-wrap" data-name="your-message"><textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Mensaje..."></textarea></span></p>
-                                                <p><button type="submit" class="octf-btn">Enviar</button>
+                                                <p><span class="wpcf7-form-control-wrap" data-name="your-message"><textarea id="mensaje" name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Mensaje..."></textarea></span></p>
+                                                <p><button type="submit" id="btn_enviar" class="octf-btn">Enviar</button>
                                             </div>
                                             <div class="wpcf7-response-output" aria-hidden="true"></div></form></div></div>		</div>
                             </div>
