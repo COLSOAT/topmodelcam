@@ -1,6 +1,7 @@
 package spring_crud.controller;
 
 
+import com.javamaster.spring_crud.dao.UsuarioDao;
 import com.javamaster.spring_crud.dao.VehiculoDAO;
 import com.javamaster.spring_crud.modelo.Usuario;
 import com.javamaster.spring_crud.modelo.Vehiculo;

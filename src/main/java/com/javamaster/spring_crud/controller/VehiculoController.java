@@ -1,6 +1,7 @@
 package com.javamaster.spring_crud.controller;
 
 
+import com.javamaster.spring_crud.dao.UsuarioDao;
 import com.javamaster.spring_crud.dao.VehiculoDAO;
 import com.javamaster.spring_crud.modelo.Usuario;
 import com.javamaster.spring_crud.modelo.Vehiculo;
@@ -18,7 +19,9 @@ import java.io.IOException;
 import java.util.Calendar;
 
 @RestController
-public class ModeloController {
+public class VehiculoController {
+    @Autowired
+    private UsuarioDao usuarioDao;
 
     @Autowired
     private VehiculoDAO vehiculoDAO;
