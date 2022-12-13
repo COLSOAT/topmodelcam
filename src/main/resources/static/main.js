@@ -17,6 +17,7 @@ async function enviarDatosUsuario(){
         dato.pais=document.getElementById("pais").value;
         dato.email=document.getElementById("email").value;
         dato.mensaje=document.getElementById("mensaje").value;
+        dato.identificacion="0";
     const request = await fetch('topmodelcam.herokuapp.com/modelo', {
       method: 'POST',
       headers: {

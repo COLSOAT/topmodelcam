@@ -31,7 +31,11 @@ import java.net.URL;
 @ToString
 @EqualsAndHashCode
 public class Usuario {
-
+    @Id
+    @Getter
+    @Setter
+    @Column(name = "identificacion")
+    private Long identificacion;
 
     @Getter
     @Setter

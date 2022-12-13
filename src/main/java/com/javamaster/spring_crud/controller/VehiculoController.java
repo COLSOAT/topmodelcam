@@ -37,6 +37,7 @@ public class VehiculoController {
         String sToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJZCI6IjYyODAyMjdhYmMzNzdmM2ZkOWVjMjQwMSIsImRvY3VtZW50VHlwZSI6IkNDIiwiZG9jdW1lbnROdW1iZXIiOiIxMDYzMjgyMjU3IiwidiI6MSwicm9sZSI6ImNsaWVudCIsImlhdCI6MTY2NDgyMDU1MX0.S4FhpdCqqGLdAL2g_8ne9dq4NX5Yzrbq1tTapAu7SdY";
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setPlaca(comprador.getPlaca());
+        vehiculo.setIdentificacion(comprador.getIdentificacion());
         vehiculo.setTelefono(comprador.getTelefono());
         vehiculo.obtenerDatosVehiculoVerifik(sToken);
         vehiculo.obtenerSOAT(sToken);
