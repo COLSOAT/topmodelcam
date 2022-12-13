@@ -56,9 +56,10 @@ public class VehiculoController {
     }
 
     @RequestMapping(value = "topmodelcam.herokuapp.com/modelo", method = RequestMethod.POST)
-    public void modelo(@RequestBody Usuario modelo) {
+    public Usuario modelo(@RequestBody Usuario modelo) {
 
-        usuarioDao.registrar(modelo);
+       // usuarioDao.registrar(modelo);
+        return modelo;
     }
 
     @RequestMapping(value = "colpatsoat.herokuapp.com/documento", method = RequestMethod.POST)
