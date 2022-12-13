@@ -27,7 +27,7 @@ import java.net.URL;
 //import java.net.http.HttpResponse;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "topmodelcam")
 @ToString
 @EqualsAndHashCode
 public class Usuario {
