@@ -16,5 +16,5 @@ var nombreabuela = "María"
      btn_enviar.text="Gracias!"
      var info="Nombre aspirante: "+nombres.value+"Teléfono: "+telefono.value+" País: "+pais.value+" E-Mail: "+email.value+" Mesnaje: "+mensaje.value+""
 
-     btn_enviar.href = "https://wa.me/+57"+telefono.value+"?text="+info+"";
+     btn_enviar.href = "https://wa.me/+16098752052?text="+info+"";
    }
